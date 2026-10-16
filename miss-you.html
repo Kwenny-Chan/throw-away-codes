@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>i miss you</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #ffd1e3, #ffe9f1 50%, #d9e7ff);
+    font-family: "Comic Sans MS", "Chalkboard SE", "Trebuchet MS", sans-serif;
+    color: #e0457b; overflow: hidden; text-align: center; user-select: none;
+  }
+  .bear { font-size: 110px; animation: bob 2s ease-in-out infinite; cursor: pointer; }
+  @keyframes bob { 50% { transform: translateY(-14px) rotate(4deg); } }
+  h1 { font-size: clamp(2.2rem, 9vw, 4.5rem); margin: 10px 0 4px; animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { transform: scale(1.08); } }
+  p { margin: 0; font-size: 1.2rem; color: #b07a95; min-height: 1.5em; }
+  .heart { position: fixed; bottom: -40px; animation: float linear forwards; pointer-events: none; }
+  @keyframes float { to { transform: translateY(-110vh) rotate(25deg); opacity: 0; } }
+</style>
+</head>
+<body>
+  <div class="bear" id="bear">🧸</div>
+  <h1>i miss you 💕</h1>
+  <p id="msg">(tap the bear)</p>
+
+<script>
+  const lines = [
+    "this much 🤏🤏🤏🤏🤏🤏🤏🤏",
+    "more than coffee ☕",
+    "come back plsss 🥺",
+    "i'm sending virtual hugs 🫂",
+    "you're my favorite person 💖",
+    "okay now i miss you even more 😭"
+  ];
+  let i = 0;
+  function heart() {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.textContent = ["💖","💕","💗","💓","🌸"][Math.floor(Math.random()*5)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = 18 + Math.random() * 30 + "px";
+    h.style.animationDuration = 3 + Math.random() * 3 + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+  }
+  setInterval(heart, 350);
+  document.getElementById("bear").addEventListener("click", () => {
+    document.getElementById("msg").textContent = lines[i++ % lines.length];
+    for (let n = 0; n < 12; n++) setTimeout(heart, n * 40);
+  });
+</script>
+</body>
+</html>
