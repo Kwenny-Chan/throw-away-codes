@@ -1,0 +1,12 @@
+name = "calorie-bot"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+REPLY_LANG = "Thai"
+GEMINI_MODEL = "gemini-2.5-flash"
+
+# Secrets (set with `npx wrangler secret put <NAME>`, never commit them):
+#   LINE_CHANNEL_SECRET
+#   LINE_CHANNEL_ACCESS_TOKEN
+#   GEMINI_API_KEY
